@@ -141,3 +141,85 @@ a:hover {
 @keyframes fade-up {
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ---------------------------------------------------------------------------
+   PRINT STYLESHEET
+   The page literally pretends to be a publication; Cmd-P should give you a
+   typeset article, not a screenshot of a webpage. Keep cream-and-ink on
+   screen, switch to white-and-ink for ink savings on paper. Hide nav and
+   interactive chrome, keep masthead + colophon as page header/footer.
+   --------------------------------------------------------------------------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 22mm 18mm;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  /* Kill paper-grain, motion, animations */
+  body::before          { display: none !important; }
+  .reveal, .reveal-1,
+  .reveal-2, .reveal-3,
+  .reveal-4, .reveal-5  { opacity: 1 !important; transform: none !important; animation: none !important; }
+
+  /* Hide interactive chrome */
+  nav[aria-label="Primary"],
+  header a[href="/"]    { /* keep wordmark */ }
+  nav[aria-label="Primary"] { display: none !important; }
+
+  /* Keep masthead but recede the rules */
+  .hairline             { background: #888; }
+
+  /* Display hierarchy — tighten for paper */
+  .display              { font-variation-settings: 'opsz' 96, 'SOFT' 100, 'WONK' 0; }
+  h1.display            { font-size: 28pt; line-height: 1.05; }
+  h2.display            { font-size: 18pt; line-height: 1.15; }
+  h3.display            { font-size: 13pt; line-height: 1.2; }
+
+  /* Drop cap proportional for print */
+  .dropcap::first-letter {
+    font-size: 4.4em;
+    color: #000;
+  }
+
+  /* Section labels in oxblood read as colored gray on cheap printers; force black */
+  .label, .text-oxblood, .text-stone, .text-ink { color: #000 !important; }
+  a, a:visited          { color: #000 !important; text-decoration: none; }
+
+  /* runcmd as displayed equation, sober */
+  .runcmd               { border-color: #888; padding: 0.5em 0; }
+  .runcmd .prompt,
+  .runcmd .cmd,
+  .runcmd .note         { color: #000 !important; }
+
+  /* Receipts panel: keep but compact */
+  dl                    { font-size: 10pt; }
+
+  /* URL after each link — academic article convention */
+  main a[href^="http"]::after,
+  footer a[href^="http"]::after,
+  main a[href^="mailto:"]::after,
+  footer a[href^="mailto:"]::after {
+    content: " <" attr(href) ">";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: #555;
+  }
+  /* Don't print the URL twice for inline mono links that already show their URL */
+  .font-mono a[href^="http"]::after,
+  a.font-mono[href^="http"]::after { content: ""; }
+
+  /* Section breaks shouldn't split mid-paragraph if avoidable */
+  section, article      { break-inside: avoid-page; }
+  h1, h2, h3            { break-after: avoid-page; }
+
+  /* Page footer: print the build SHA + URL on every page */
+  footer .label         { font-size: 8pt; }
+}
+
