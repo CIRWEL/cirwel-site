@@ -1,0 +1,129 @@
+<!--
+  FIG. 3 — Governance verdicts.
+  Four verdicts arranged as a closed cycle around the central hex device,
+  after the manner of an alchemical or cosmological diagram. The hex at
+  center is the same engraved device that anchors the whole brand. Each
+  verdict has a hexagonal frame, a label in mono small caps, and a small
+  italic gloss describing what it means.
+
+  Engraving register matches FIG. 1 and FIG. 2.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440">
+  <defs>
+    <filter id="rough3" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="17" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.5"/>
+    </filter>
+
+    <!-- Reusable verdict hex (flat-top, r=44) -->
+    <polygon id="vHex" points="-22,-38.1 22,-38.1 44,0 22,38.1 -22,38.1 -44,0"/>
+    <!-- Center device hex (smaller, r=22) -->
+    <polygon id="vHexCenter" points="-11,-19 11,-19 22,0 11,19 -11,19 -22,0"/>
+  </defs>
+
+  <!-- Cream paper -->
+  <rect width="720" height="440" fill="#F5F1E8"/>
+
+  <!-- Plate frame -->
+  <rect x="20" y="20" width="680" height="400" fill="none" stroke="#7A1F1F" stroke-width="1.2"/>
+  <rect x="26" y="26" width="668" height="388" fill="none" stroke="#7A1F1F" stroke-width="0.4"/>
+
+  <!-- Corner fleurons -->
+  <g stroke="#7A1F1F" stroke-width="0.7" fill="#7A1F1F">
+    <line x1="20" y1="20" x2="34" y2="34" fill="none"/><circle cx="22" cy="22" r="1.6"/>
+    <line x1="700" y1="20" x2="686" y2="34" fill="none"/><circle cx="698" cy="22" r="1.6"/>
+    <line x1="20" y1="420" x2="34" y2="406" fill="none"/><circle cx="22" cy="418" r="1.6"/>
+    <line x1="700" y1="420" x2="686" y2="406" fill="none"/><circle cx="698" cy="418" r="1.6"/>
+  </g>
+
+  <g filter="url(#rough3)">
+    <!-- Center: small hex device + dashed cycle ring threading through verdicts -->
+    <g transform="translate(360, 200)">
+      <!-- Large dashed circle indicating the cycle (drawn first, behind verdicts) -->
+      <circle cx="0" cy="0" r="120" fill="none" stroke="#7A1F1F" stroke-width="0.8"
+              stroke-dasharray="3 4" opacity="0.55"/>
+    </g>
+
+    <!-- Verdict NORTH: PROCEED -->
+    <g transform="translate(360, 110)">
+      <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
+      <text x="0" y="-4" text-anchor="middle"
+            font-family="'JetBrains Mono', ui-monospace, monospace"
+            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">PROCEED</text>
+      <text x="0" y="14" text-anchor="middle"
+            font-family="'Fraunces Variable', Georgia, serif"
+            font-size="11" font-style="italic" fill="#5C544A">healthy</text>
+    </g>
+
+    <!-- Verdict EAST: GUIDE -->
+    <g transform="translate(478, 200)">
+      <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
+      <text x="0" y="-4" text-anchor="middle"
+            font-family="'JetBrains Mono', ui-monospace, monospace"
+            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">GUIDE</text>
+      <text x="0" y="14" text-anchor="middle"
+            font-family="'Fraunces Variable', Georgia, serif"
+            font-size="11" font-style="italic" fill="#5C544A">slightly off</text>
+    </g>
+
+    <!-- Verdict SOUTH: PAUSE -->
+    <g transform="translate(360, 290)">
+      <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
+      <text x="0" y="-4" text-anchor="middle"
+            font-family="'JetBrains Mono', ui-monospace, monospace"
+            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">PAUSE</text>
+      <text x="0" y="14" text-anchor="middle"
+            font-family="'Fraunces Variable', Georgia, serif"
+            font-size="11" font-style="italic" fill="#5C544A">needs review</text>
+    </g>
+
+    <!-- Verdict WEST: REJECT -->
+    <g transform="translate(242, 200)">
+      <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
+      <text x="0" y="-4" text-anchor="middle"
+            font-family="'JetBrains Mono', ui-monospace, monospace"
+            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">REJECT</text>
+      <text x="0" y="14" text-anchor="middle"
+            font-family="'Fraunces Variable', Georgia, serif"
+            font-size="11" font-style="italic" fill="#5C544A">significant concern</text>
+    </g>
+
+    <!-- Center device: small filled hex (publisher's-mark continuity) -->
+    <g transform="translate(360, 200)">
+      <use href="#vHexCenter" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
+      <circle cx="0" cy="0" r="3" fill="#7A1F1F"/>
+    </g>
+
+    <!-- Arrows on the cycle ring — small chevrons indicating direction of return-to-proceed flow -->
+    <g stroke="#7A1F1F" stroke-width="1.2" fill="none">
+      <!-- NE: between PROCEED and GUIDE -->
+      <path d="M 446 134 L 451 138 L 444 142"/>
+      <!-- SE: between GUIDE and PAUSE -->
+      <path d="M 446 266 L 442 271 L 437 263"/>
+      <!-- SW: between PAUSE and REJECT -->
+      <path d="M 274 266 L 269 263 L 274 258"/>
+      <!-- NW: between REJECT and PROCEED -->
+      <path d="M 274 134 L 280 137 L 277 144"/>
+    </g>
+
+    <!-- Italic byline below center -->
+    <text x="360" y="350"
+          font-family="'Fraunces Variable', Georgia, serif"
+          font-size="13" font-style="italic" fill="#1A1612" text-anchor="middle">
+      Each issued with signed lineage back to the observation that produced it.
+    </text>
+  </g>
+
+  <!-- Caption -->
+  <line x1="80" y1="370" x2="640" y2="370" stroke="#C9C0AE" stroke-width="0.6"/>
+  <text x="360" y="392"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="11" letter-spacing="3" fill="#7A1F1F" text-anchor="middle">
+    FIG. III &middot; THE FOUR VERDICTS
+  </text>
+  <text x="360" y="408"
+        font-family="'Fraunces Variable', Georgia, serif"
+        font-size="11" font-style="italic" fill="#5C544A" text-anchor="middle">
+    Issued continuously. The cycle is closed; there is no terminal state.
+  </text>
+</svg>
