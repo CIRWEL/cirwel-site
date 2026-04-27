@@ -1,9 +1,24 @@
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --grain-opacity: 0.04;
+}
+
+/* Prevent CLS from font-loading by adjusting fallback font metrics */
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 100%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
 
 html {

@@ -12,7 +12,7 @@ export default {
         sepia:   '#C9C0AE',
       },
       fontFamily: {
-        serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+        serif: ['"Fraunces Variable"', 'Fraunces Fallback', 'ui-serif', 'Georgia', 'serif'],
         mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       maxWidth: {
