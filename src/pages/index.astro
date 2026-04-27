@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
+  description="Continuous self-state telemetry, class-conditional calibration, and signed provenance for AI agents you didn't build yourself. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
+>
+  <header class="px-6 lg:px-12 pt-8 pb-4 max-w-screen-xl mx-auto flex items-center justify-between">
+    <a href="/" class="no-underline">
+      <span class="display text-xl font-medium tracking-tight">CIRWEL Systems</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 label text-stone">
+      <a href="#thesis"  class="no-underline hover:text-oxblood transition-colors">Thesis</a>
+      <a href="/paper"   class="no-underline hover:text-oxblood transition-colors">Paper</a>
+      <a href="/patents" class="no-underline hover:text-oxblood transition-colors">Patents</a>
+      <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="no-underline hover:text-oxblood transition-colors">Plugin</a>
+      <a href="#contact" class="no-underline hover:text-oxblood transition-colors">Contact</a>
+    </nav>
+  </header>
+
+  <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
+
+    <!-- HERO -->
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— A research preface, with running code</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
+          Runtime governance<br/>
+          for heterogeneous<br/>
+          AI-agent <span class="italic">fleets.</span>
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          Most AI safety reasons about agents in two windows: pre-deployment evaluation
+          and post-incident forensics. Between them — <em>while agents are actually
+          running</em> — there is a measurement gap. Continuous, class-calibrated
+          self-state telemetry, with signed provenance behind every intervention,
+          fills it.
+        </p>
+      </div>
+    </section>
+
+    <hr class="hairline mb-2"/>
+
+    <!-- RECEIPTS -->
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
+        <p class="label text-oxblood">— The receipts</p>
+      </div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Paper</dt>
+        <dd class="col-span-8 md:col-span-9">
+          <a href="https://github.com/CIRWEL/unitares-paper-v6" class="font-medium">
+            UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets
+          </a><span class="text-stone"> · Wang, 2026</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">DOI</dt>
+        <dd class="col-span-8 md:col-span-9 font-mono text-sm">
+          <a href="https://doi.org/10.5281/zenodo.19647159">10.5281/zenodo.19647159</a>
+          <span class="text-stone">  (concept · resolves to latest)</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Author</dt>
+        <dd class="col-span-8 md:col-span-9">
+          Kenny Wang <span class="text-stone">· Independent Researcher · ORCID</span>
+          <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Patents</dt>
+        <dd class="col-span-8 md:col-span-9">
+          9<span class="text-stone">+</span> provisional, filed
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Tests</dt>
+        <dd class="col-span-8 md:col-span-9">
+          6,200<span class="text-stone">+ at</span> 77<span class="text-stone">% coverage</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
+        <dd class="col-span-8 md:col-span-9">
+          Continuous since <span class="font-medium">November 2025</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Code</dt>
+        <dd class="col-span-8 md:col-span-9 font-mono text-sm">
+          <a href="https://github.com/CIRWEL/unitares-governance-plugin">github.com/CIRWEL/unitares-governance-plugin</a>
+        </dd>
+      </dl>
+    </section>
+
+    <hr class="hairline mt-2 mb-20"/>
+
+    <!-- §01 THE THESIS -->
+    <section id="thesis" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§01 — The thesis</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Runtime self-state is the missing layer.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
+          <p>
+            The discipline of AI safety has built two strong instruments and one large gap.
+            <em>Pre-deployment evaluation</em> tells you whether a model behaves on a
+            benchmark. <em>Post-incident forensics</em> tells you what went wrong after
+            it didn't. In between — across the hours, days, and weeks an agent is
+            actually running — we have largely been guessing.
+          </p>
+          <p>
+            CIRWEL Systems builds the runtime layer that closes the gap. Each agent
+            carries a continuous, four-dimensional self-state vector. The vector is
+            calibrated against a baseline specific to the agent's <em>class</em>,
+            because a long-running coding assistant does not behave like an ephemeral
+            parser, and neither behaves like an embodied service. Drift is detected
+            against the right reference, not an averaged one. Every governance verdict
+            — <span class="font-mono text-base">proceed</span>,
+            <span class="font-mono text-base">guide</span>,
+            <span class="font-mono text-base">pause</span>,
+            <span class="font-mono text-base">reject</span> — carries a signed lineage
+            back to the observation that produced it.
+          </p>
+          <p>
+            The framework is described in
+            <a href="https://github.com/CIRWEL/unitares-paper-v6">a paper</a>,
+            covered by nine provisional patents, and has been governing CIRWEL's own
+            development fleet without interruption since November 2025.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §02 THREE PILLARS -->
+    <section id="pillars" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§02 — Three pillars</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9 grid md:grid-cols-3 gap-10 lg:gap-12">
+
+        <article>
+          <p class="label text-stone mb-4">i</p>
+          <h3 class="display text-2xl mb-4 leading-tight">Class-conditional calibration</h3>
+          <p class="text-stone leading-relaxed">
+            A coding agent and a research agent are not held to the same statistics.
+            UNITARES learns separate baselines per agent class from production
+            telemetry, so drift in one class is not masked by noise from another.
+          </p>
+        </article>
+
+        <article>
+          <p class="label text-stone mb-4">ii</p>
+          <h3 class="display text-2xl mb-4 leading-tight">Drift detection at runtime</h3>
+          <p class="text-stone leading-relaxed">
+            Continuous state observation catches behavioral drift while it is
+            happening, not in the post-incident review. Verdicts arrive early enough
+            to intervene, late enough to be evidence-based.
+          </p>
+        </article>
+
+        <article>
+          <p class="label text-stone mb-4">iii</p>
+          <h3 class="display text-2xl mb-4 leading-tight">Auditable provenance</h3>
+          <p class="text-stone leading-relaxed">
+            Every intervention carries a signed lineage back to the observation that
+            triggered it. Regulators, underwriters, and the next-shift human can
+            replay the chain — not just read a verdict.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §03 IN PRODUCTION -->
+    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§03 — In production</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Governing its own development.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-stone max-w-prose">
+          <p>
+            The system you read about on this page also wrote, tested, and shipped a
+            meaningful fraction of itself. CIRWEL's development fleet — a heterogeneous
+            mix of long-running resident agents, short-lived coding sessions, an
+            embodied edge service, and a Discord bridge — has been governed
+            continuously by UNITARES since November 2025.
+          </p>
+          <p>
+            Living under one's own framework is the cheapest credibility a research
+            operator can offer. We treat it as the floor, not the ceiling.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §04 ENGAGE -->
+    <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§04 — Engage</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">
+          Three ways in.
+        </h2>
+        <ul class="space-y-7 text-lg max-w-prose">
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Read</span>
+            <span class="col-span-12 md:col-span-10">
+              The paper:
+              <a href="https://github.com/CIRWEL/unitares-paper-v6" class="font-medium">UNITARES (Wang, 2026)</a>.
+              CC-BY 4.0, citable via the DOI above.
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Run</span>
+            <span class="col-span-12 md:col-span-10">
+              The open-source plugin:
+              <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="font-mono text-base">CIRWEL/unitares-governance-plugin</a>.
+              Drops into Claude Code or Codex; emits real verdicts against a local server.
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Write</span>
+            <span class="col-span-12 md:col-span-10">
+              Direct to the founder:
+              <a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a>.
+              Funders, researchers, and integrators all welcome.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+  </main>
+
+  <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
+    <div class="col-span-12 md:col-span-4">
+      <p class="display text-base font-medium text-ink mb-2">CIRWEL Systems</p>
+      <p>Independent research operator.</p>
+    </div>
+    <div class="col-span-12 md:col-span-4">
+      <p class="label mb-3 text-ink">Records</p>
+      <p>
+        ORCID <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono">0009-0006-7544-2374</a><br/>
+        DOI <a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono">10.5281/zenodo.19647159</a>
+      </p>
+    </div>
+    <div class="col-span-12 md:col-span-4 md:text-right">
+      <p class="label mb-3 text-ink">© 2026</p>
+      <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
+    </div>
+  </footer>
+</BaseLayout>
