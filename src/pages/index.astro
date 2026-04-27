@@ -52,11 +52,6 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
           self-state telemetry, with signed provenance behind every intervention,
           fills it.
         </p>
-        <div class="runcmd mt-8 max-w-prose reveal reveal-3">
-          <span class="prompt">$</span>
-          <span class="cmd">git clone CIRWEL/unitares &amp;&amp; docker compose up</span>
-          <span class="note">→ http://localhost:8767/mcp/</span>
-        </div>
       </div>
     </section>
 
@@ -252,17 +247,24 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
               CC-BY 4.0, citable via the DOI above.
             </span>
           </li>
-          <li class="grid grid-cols-12 gap-4 items-baseline">
-            <span class="col-span-12 md:col-span-2 label text-stone">Run</span>
-            <span class="col-span-12 md:col-span-10">
-              <span class="font-medium">The server</span> at
-              <a href="https://github.com/CIRWEL/unitares" class="font-mono text-base">CIRWEL/unitares</a>
-              boots locally with one <span class="font-mono text-base">docker compose up</span>.
-              <span class="font-medium">The plugin</span> at
-              <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="font-mono text-base">CIRWEL/unitares-governance-plugin</a>
-              drops into Claude Code or Codex and emits real verdicts against it.
-              Both are Apache 2.0.
-            </span>
+          <li class="grid grid-cols-12 gap-4 items-start">
+            <span class="col-span-12 md:col-span-2 label text-stone pt-1">Run</span>
+            <div class="col-span-12 md:col-span-10 space-y-4">
+              <p>
+                <span class="font-medium">The server</span> at
+                <a href="https://github.com/CIRWEL/unitares" class="font-mono text-base">CIRWEL/unitares</a>
+                boots locally.
+                <span class="font-medium">The plugin</span> at
+                <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="font-mono text-base">CIRWEL/unitares-governance-plugin</a>
+                drops into Claude Code or Codex and emits real verdicts against it.
+                Both are Apache 2.0.
+              </p>
+              <div class="runcmd">
+                <span class="prompt">$</span>
+                <span class="cmd">git clone CIRWEL/unitares &amp;&amp; docker compose up</span>
+                <span class="note">→ http://localhost:8767/mcp/</span>
+              </div>
+            </div>
           </li>
           <li class="grid grid-cols-12 gap-4 items-baseline">
             <span class="col-span-12 md:col-span-2 label text-stone">Write</span>
