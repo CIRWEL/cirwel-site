@@ -1,12 +1,15 @@
 <!--
-  FIG. 3 — Governance verdicts.
-  Four verdicts arranged as a closed cycle around the central hex device,
-  after the manner of an alchemical or cosmological diagram. The hex at
-  center is the same engraved device that anchors the whole brand. Each
-  verdict has a hexagonal frame, a label in mono small caps, and a small
-  italic gloss describing what it means.
+  FIG. III — The four verdicts.
 
-  Engraving register matches FIG. 1 and FIG. 2.
+  An alchemical-diagram register: four verdict hexes at the compass
+  points of a closed dashed cycle, with the engraved hex device anchored
+  at center. Hairline radial lines run from the center device out to
+  each verdict — these are the "issued from" lines, signaling provenance.
+  Faint hatching shades the outer face of each verdict hex (engraving
+  consistency with logo-engraved.svg). Glosses are short, single-word,
+  set inside each hex below the verdict label so the geometry breathes.
+
+  Matches FIG. I and FIG. II in plate dimensions, frame, fleurons, caption.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440">
   <defs>
@@ -15,10 +18,19 @@
       <feDisplacementMap in="SourceGraphic" in2="n" scale="0.5"/>
     </filter>
 
-    <!-- Reusable verdict hex (flat-top, r=44) -->
+    <pattern id="vHatch" patternUnits="userSpaceOnUse" width="3" height="3"
+             patternTransform="rotate(40)">
+      <line x1="0" y1="0" x2="0" y2="3" stroke="#7A1F1F" stroke-width="0.4" opacity="0.6"/>
+    </pattern>
+
+    <!-- Verdict hex frame, r=44 -->
     <polygon id="vHex" points="-22,-38.1 22,-38.1 44,0 22,38.1 -22,38.1 -44,0"/>
-    <!-- Center device hex (smaller, r=22) -->
-    <polygon id="vHexCenter" points="-11,-19 11,-19 22,0 11,19 -11,19 -22,0"/>
+    <!-- Outer-face triangle (right side) for hatching -->
+    <polygon id="vHexOuter" points="22,-38.1 44,0 22,38.1 0,0"/>
+    <!-- Center engraved device -->
+    <polygon id="centerOuter" points="-22,-38.1 22,-38.1 44,0 22,38.1 -22,38.1 -44,0"/>
+    <polygon id="centerInner" points="-12,-20.8 12,-20.8 24,0 12,20.8 -12,20.8 -24,0"/>
+    <polygon id="centerDot"   points="-5,-8.7 5,-8.7 10,0 5,8.7 -5,8.7 -10,0"/>
   </defs>
 
   <!-- Cream paper -->
@@ -37,81 +49,100 @@
   </g>
 
   <g filter="url(#rough3)">
-    <!-- Center: small hex device + dashed cycle ring threading through verdicts -->
-    <g transform="translate(360, 200)">
-      <!-- Large dashed circle indicating the cycle (drawn first, behind verdicts) -->
-      <circle cx="0" cy="0" r="120" fill="none" stroke="#7A1F1F" stroke-width="0.8"
-              stroke-dasharray="3 4" opacity="0.55"/>
+
+    <!-- Center coordinates: 360, 200 -->
+
+    <!-- Cycle ring: dashed circle threading through the four verdicts -->
+    <circle cx="360" cy="200" r="118" fill="none" stroke="#7A1F1F" stroke-width="0.8"
+            stroke-dasharray="3 4" opacity="0.55"/>
+
+    <!-- Radial "issued from" lines from center hex to each verdict — the provenance indicator -->
+    <g stroke="#7A1F1F" stroke-width="0.6" opacity="0.5">
+      <line x1="360" y1="170" x2="360" y2="124"/>  <!-- to N -->
+      <line x1="390" y1="200" x2="436" y2="200"/>  <!-- to E -->
+      <line x1="360" y1="230" x2="360" y2="276"/>  <!-- to S -->
+      <line x1="330" y1="200" x2="284" y2="200"/>  <!-- to W -->
     </g>
 
-    <!-- Verdict NORTH: PROCEED -->
-    <g transform="translate(360, 110)">
+    <!-- VERDICT N: PROCEED — top -->
+    <g transform="translate(360, 86)">
+      <!-- Outer-face hatching -->
+      <use href="#vHexOuter" fill="url(#vHatch)" opacity="0.9"/>
+      <!-- Hex outline -->
       <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
-      <text x="0" y="-4" text-anchor="middle"
+      <!-- Verdict word -->
+      <text y="-4" text-anchor="middle"
             font-family="'JetBrains Mono', ui-monospace, monospace"
-            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">PROCEED</text>
-      <text x="0" y="14" text-anchor="middle"
+            font-size="12" letter-spacing="2.6" fill="#1A1612" font-weight="500">PROCEED</text>
+      <!-- Italic gloss -->
+      <text y="16" text-anchor="middle"
             font-family="'Fraunces Variable', Georgia, serif"
             font-size="11" font-style="italic" fill="#5C544A">healthy</text>
     </g>
 
-    <!-- Verdict EAST: GUIDE -->
+    <!-- VERDICT E: GUIDE — right -->
     <g transform="translate(478, 200)">
+      <use href="#vHexOuter" fill="url(#vHatch)" opacity="0.9"/>
       <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
-      <text x="0" y="-4" text-anchor="middle"
+      <text y="-4" text-anchor="middle"
             font-family="'JetBrains Mono', ui-monospace, monospace"
-            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">GUIDE</text>
-      <text x="0" y="14" text-anchor="middle"
+            font-size="12" letter-spacing="2.6" fill="#1A1612" font-weight="500">GUIDE</text>
+      <text y="16" text-anchor="middle"
             font-family="'Fraunces Variable', Georgia, serif"
-            font-size="11" font-style="italic" fill="#5C544A">slightly off</text>
+            font-size="11" font-style="italic" fill="#5C544A">drifting</text>
     </g>
 
-    <!-- Verdict SOUTH: PAUSE -->
-    <g transform="translate(360, 290)">
+    <!-- VERDICT S: PAUSE — bottom (mirrored hatch on left face since it faces away) -->
+    <g transform="translate(360, 314)">
+      <use href="#vHexOuter" fill="url(#vHatch)" opacity="0.9"/>
       <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
-      <text x="0" y="-4" text-anchor="middle"
+      <text y="-4" text-anchor="middle"
             font-family="'JetBrains Mono', ui-monospace, monospace"
-            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">PAUSE</text>
-      <text x="0" y="14" text-anchor="middle"
+            font-size="12" letter-spacing="2.6" fill="#1A1612" font-weight="500">PAUSE</text>
+      <text y="16" text-anchor="middle"
             font-family="'Fraunces Variable', Georgia, serif"
-            font-size="11" font-style="italic" fill="#5C544A">needs review</text>
+            font-size="11" font-style="italic" fill="#5C544A">reflect</text>
     </g>
 
-    <!-- Verdict WEST: REJECT -->
+    <!-- VERDICT W: REJECT — left -->
     <g transform="translate(242, 200)">
+      <use href="#vHexOuter" fill="url(#vHatch)" opacity="0.9"/>
       <use href="#vHex" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
-      <text x="0" y="-4" text-anchor="middle"
+      <text y="-4" text-anchor="middle"
             font-family="'JetBrains Mono', ui-monospace, monospace"
-            font-size="11" letter-spacing="2.5" fill="#1A1612" font-weight="500">REJECT</text>
-      <text x="0" y="14" text-anchor="middle"
+            font-size="12" letter-spacing="2.6" fill="#1A1612" font-weight="500">REJECT</text>
+      <text y="16" text-anchor="middle"
             font-family="'Fraunces Variable', Georgia, serif"
-            font-size="11" font-style="italic" fill="#5C544A">significant concern</text>
+            font-size="11" font-style="italic" fill="#5C544A">escalate</text>
     </g>
 
-    <!-- Center device: small filled hex (publisher's-mark continuity) -->
-    <g transform="translate(360, 200)">
-      <use href="#vHexCenter" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
-      <circle cx="0" cy="0" r="3" fill="#7A1F1F"/>
+    <!-- Central engraved device — same hex-in-hex device as logo-engraved -->
+    <g transform="translate(360, 200) scale(0.62)">
+      <use href="#centerOuter" fill="none" stroke="#7A1F1F" stroke-width="2"/>
+      <use href="#centerInner" fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
+      <use href="#centerDot"   fill="#7A1F1F"/>
     </g>
 
-    <!-- Arrows on the cycle ring — small chevrons indicating direction of return-to-proceed flow -->
-    <g stroke="#7A1F1F" stroke-width="1.2" fill="none">
-      <!-- NE: between PROCEED and GUIDE -->
-      <path d="M 446 134 L 451 138 L 444 142"/>
-      <!-- SE: between GUIDE and PAUSE -->
-      <path d="M 446 266 L 442 271 L 437 263"/>
-      <!-- SW: between PAUSE and REJECT -->
-      <path d="M 274 266 L 269 263 L 274 258"/>
-      <!-- NW: between REJECT and PROCEED -->
-      <path d="M 274 134 L 280 137 L 277 144"/>
+    <!-- Directional chevrons on the cycle ring (clockwise: N→E→S→W→N) -->
+    <g stroke="#7A1F1F" stroke-width="1.2" fill="none" stroke-linejoin="round">
+      <!-- NE chevron -->
+      <path d="M 449 121 L 455 126 L 449 132"/>
+      <!-- SE chevron -->
+      <path d="M 449 279 L 442 280 L 442 274"/>
+      <!-- SW chevron -->
+      <path d="M 271 279 L 265 274 L 271 268"/>
+      <!-- NW chevron -->
+      <path d="M 271 121 L 278 121 L 278 127"/>
     </g>
 
-    <!-- Italic byline below center -->
-    <text x="360" y="350"
-          font-family="'Fraunces Variable', Georgia, serif"
-          font-size="13" font-style="italic" fill="#1A1612" text-anchor="middle">
-      Each issued with signed lineage back to the observation that produced it.
-    </text>
+    <!-- Compass-style cardinal markers around the ring (very subtle) -->
+    <g font-family="'JetBrains Mono', ui-monospace, monospace"
+       font-size="7" letter-spacing="1.5" fill="#5C544A" opacity="0.6" text-anchor="middle">
+      <text x="360" y="55">N</text>
+      <text x="514" y="204">E</text>
+      <text x="360" y="354">S</text>
+      <text x="206" y="204">W</text>
+    </g>
   </g>
 
   <!-- Caption -->
@@ -124,6 +155,6 @@
   <text x="360" y="408"
         font-family="'Fraunces Variable', Georgia, serif"
         font-size="11" font-style="italic" fill="#5C544A" text-anchor="middle">
-    Issued continuously. The cycle is closed; there is no terminal state.
+    Issued continuously, with signed lineage. The cycle is closed; there is no terminal state.
   </text>
 </svg>
