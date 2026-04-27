@@ -1,0 +1,111 @@
+---
+/**
+ * Schema.org JSON-LD for the CIRWEL Systems site.
+ *
+ * One @graph holds the brand's stable entities (Organization, Person,
+ * ScholarlyArticle, SoftwareSourceCode); a per-page WebPage is appended
+ * with the URL/title/description of whatever page rendered this component.
+ *
+ * Consumers: search engines (Google, Bing), academic indexers (Semantic
+ * Scholar, OpenAlex via DOI cross-link), and AI search/citation crawlers
+ * (ChatGPT, Claude, Perplexity) that increasingly route citations via JSON-LD.
+ */
+interface Props {
+  pageUrl: string;
+  pageTitle: string;
+  pageDesc: string;
+}
+const { pageUrl, pageTitle, pageDesc } = Astro.props;
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://cirwelsystems.com/#website',
+      'url': 'https://cirwelsystems.com/',
+      'name': 'CIRWEL Systems',
+      'description': 'Runtime governance for heterogeneous AI-agent fleets.',
+      'publisher': { '@id': 'https://cirwelsystems.com/#org' },
+      'inLanguage': 'en',
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://cirwelsystems.com/#org',
+      'name': 'CIRWEL Systems',
+      'url': 'https://cirwelsystems.com/',
+      'foundingDate': '2025',
+      'founder': { '@id': 'https://orcid.org/0009-0006-7544-2374' },
+      'sameAs': [
+        'https://github.com/CIRWEL',
+      ],
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://orcid.org/0009-0006-7544-2374',
+      'name': 'Kenny Wang',
+      'givenName': 'Kenny',
+      'familyName': 'Wang',
+      'identifier': '0009-0006-7544-2374',
+      'sameAs': [
+        'https://orcid.org/0009-0006-7544-2374',
+      ],
+      'affiliation': { '@id': 'https://cirwelsystems.com/#org' },
+      'jobTitle': 'Independent Researcher',
+    },
+    {
+      '@type': 'ScholarlyArticle',
+      '@id': 'https://doi.org/10.5281/zenodo.19647159',
+      'name': 'UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets',
+      'headline': 'UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets',
+      'author': { '@id': 'https://orcid.org/0009-0006-7544-2374' },
+      'datePublished': '2026',
+      'identifier': [
+        { '@type': 'PropertyValue', 'propertyID': 'doi', 'value': '10.5281/zenodo.19647159' },
+      ],
+      'publisher': { '@id': 'https://cirwelsystems.com/#org' },
+      'license': 'https://creativecommons.org/licenses/by/4.0/',
+      'url': 'https://doi.org/10.5281/zenodo.19647159',
+      'keywords': [
+        'autonomous governance',
+        'information theory',
+        'heterogeneous multi-agent systems',
+        'class-conditional calibration',
+        'AI safety',
+      ],
+    },
+    {
+      '@type': 'SoftwareSourceCode',
+      '@id': 'https://github.com/CIRWEL/unitares',
+      'name': 'UNITARES governance MCP server',
+      'description': 'Reference implementation: continuous self-state telemetry and class-conditional calibration server for AI-agent fleets.',
+      'codeRepository': 'https://github.com/CIRWEL/unitares',
+      'programmingLanguage': 'Python',
+      'license': 'https://www.apache.org/licenses/LICENSE-2.0',
+      'author': { '@id': 'https://orcid.org/0009-0006-7544-2374' },
+      'isBasedOn': { '@id': 'https://doi.org/10.5281/zenodo.19647159' },
+    },
+    {
+      '@type': 'SoftwareSourceCode',
+      '@id': 'https://github.com/CIRWEL/unitares-governance-plugin',
+      'name': 'UNITARES governance plugin',
+      'description': 'Claude Code / Codex plugin that emits real governance verdicts against a UNITARES server.',
+      'codeRepository': 'https://github.com/CIRWEL/unitares-governance-plugin',
+      'programmingLanguage': 'TypeScript',
+      'license': 'https://www.apache.org/licenses/LICENSE-2.0',
+      'author': { '@id': 'https://orcid.org/0009-0006-7544-2374' },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': pageUrl,
+      'url': pageUrl,
+      'name': pageTitle,
+      'description': pageDesc,
+      'isPartOf': { '@id': 'https://cirwelsystems.com/#website' },
+      'about': { '@id': 'https://doi.org/10.5281/zenodo.19647159' },
+      'inLanguage': 'en',
+    },
+  ],
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(graph)}></script>
