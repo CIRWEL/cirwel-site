@@ -180,6 +180,39 @@ import PageFooter from '../components/PageFooter.astro';
 
     <hr class="hairline"/>
 
+    <!-- INTERLUDE: First measurement -->
+    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">— A first measurement</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9 max-w-prose">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">
+          29% of verdicts changed.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink">
+          <p>
+            On a 30-day slice of production data — 13,310 governance
+            observations across the fleet — replaying each decision with
+            per-class baselines instead of one fleet-wide baseline disagrees
+            on <span class="font-medium">28.9%</span> of them. The disagreement
+            skews systematically: state vectors the fleet-wide baseline
+            classifies as healthy or borderline are usually flagged as
+            drifting under per-class baselines. Per-class flip rates range
+            15&ndash;33%.
+          </p>
+          <p class="text-stone">
+            This is the cost of "average all agents into one distribution"
+            making its first quantitative appearance, on real production
+            data. Class-conditional calibration is the response.
+            (§11.6 of the
+            <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
     <!-- §03 IN PRODUCTION -->
     <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
