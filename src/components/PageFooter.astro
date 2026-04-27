@@ -1,4 +1,14 @@
 ---
+interface Props {
+  /**
+   * Render the publisher's mark (engraved hex device + flanking hairlines)
+   * above the colophon. Convention is to show it once per volume — on the
+   * homepage colophon — not on interior pages. Default: false.
+   */
+  publishersMark?: boolean;
+}
+const { publishersMark = false } = Astro.props;
+
 // PageFooter — single source of truth for the colophon + records block.
 // Build-time provenance is computed here so the three pages that mount
 // this component (/, /ecosystem, /404) cannot drift apart on rebuild.
@@ -22,7 +32,19 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
     <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
   </div>
 
-  <div class="col-span-12 mt-8 pt-6 border-t border-sepia/40 label text-stone text-center leading-loose">
+  {publishersMark && (
+    <div class="col-span-12 mt-12 flex items-center justify-center gap-5">
+      <hr class="hairline flex-1 max-w-[140px]" />
+      <img src="/logo-engraved.svg" alt="CIRWEL Systems publisher's device"
+           width="80" height="80" class="block" />
+      <hr class="hairline flex-1 max-w-[140px]" />
+    </div>
+  )}
+
+  <div class:list={[
+    "col-span-12 label text-stone text-center leading-loose",
+    publishersMark ? "mt-6" : "mt-8 pt-6 border-t border-sepia/40",
+  ]}>
     Set in <span class="text-ink">Fraunces</span> &amp; <span class="text-ink">JetBrains Mono</span>
     &middot; cream and oxblood
     &middot; rendered from <span class="text-ink">{buildSha}</span> at <span class="text-ink">{buildTime}</span>
