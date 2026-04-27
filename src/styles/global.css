@@ -81,16 +81,19 @@ body::before {
   padding-top: 0.04em;
 }
 
-/* Hero run command — terminal feel without going full code-block */
+/* Hero run command — set as a typographic displayed element
+   (hairline rules above + below, no background tint, no border-left).
+   Reads as "publication displayed equation/quote", not "tech-demo code block". */
 .runcmd {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.6em;
+  gap: 0.55em 0.7em;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.95rem;
-  padding: 0.7em 1em;
-  border-left: 2px solid #7A1F1F;
-  background: rgba(122, 31, 31, 0.04);
+  padding: 0.9em 0.1em;
+  border-top: 1px solid theme('colors.sepia');
+  border-bottom: 1px solid theme('colors.sepia');
   user-select: text;
 }
 .runcmd .prompt { color: #7A1F1F; user-select: none; }
