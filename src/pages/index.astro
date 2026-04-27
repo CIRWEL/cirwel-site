@@ -1,12 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-
-// Build-time provenance — baked into the page so the colophon shows
-// the exact commit and time that produced it. Hermes-style receipt fetishism,
-// applied to the dogfooding narrative in §03.
-const buildSha  = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 8) || 'local';
-const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+import PageFooter from '../components/PageFooter.astro';
 ---
 <BaseLayout
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
@@ -144,31 +139,40 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
         <article>
           <p class="label text-stone mb-4">i</p>
           <h3 class="display text-2xl mb-4 leading-tight">Class-conditional calibration</h3>
-          <p class="text-stone leading-relaxed">
+          <p class="text-stone leading-relaxed mb-4">
             A coding agent and a research agent are not held to the same statistics.
             UNITARES learns separate baselines per agent class from production
             telemetry, so drift in one class is not masked by noise from another.
           </p>
+          <a href="/ecosystem#layers" class="label text-oxblood inline-block hover:underline">
+            → § how the layers fit together
+          </a>
         </article>
 
         <article>
           <p class="label text-stone mb-4">ii</p>
           <h3 class="display text-2xl mb-4 leading-tight">Drift detection at runtime</h3>
-          <p class="text-stone leading-relaxed">
+          <p class="text-stone leading-relaxed mb-4">
             Continuous state observation catches behavioral drift while it is
             happening, not in the post-incident review. Verdicts arrive early enough
             to intervene, late enough to be evidence-based.
           </p>
+          <a href="/ecosystem#verdicts" class="label text-oxblood inline-block hover:underline">
+            → § verdicts in motion
+          </a>
         </article>
 
         <article>
           <p class="label text-stone mb-4">iii</p>
           <h3 class="display text-2xl mb-4 leading-tight">Auditable provenance</h3>
-          <p class="text-stone leading-relaxed">
+          <p class="text-stone leading-relaxed mb-4">
             Every intervention carries a signed lineage back to the observation that
             triggered it. Regulators, underwriters, and the next-shift human can
             replay the chain — not just read a verdict.
           </p>
+          <a href="/ecosystem#identity" class="label text-oxblood inline-block hover:underline">
+            → § identity &amp; lineage
+          </a>
         </article>
 
       </div>
@@ -259,29 +263,5 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
   </main>
 
-  <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
-    <div class="col-span-12 md:col-span-4">
-      <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
-      <p>Independent research operator.</p>
-    </div>
-    <div class="col-span-12 md:col-span-4">
-      <p class="label mb-3 text-ink">Records</p>
-      <p>
-        ORCID <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono">0009-0006-7544-2374</a><br/>
-        DOI <a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono">10.5281/zenodo.19647159</a>
-      </p>
-    </div>
-    <div class="col-span-12 md:col-span-4 md:text-right">
-      <p class="label mb-3 text-ink">© 2026</p>
-      <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
-    </div>
-
-    <div class="col-span-12 mt-8 pt-6 border-t border-sepia/40 label text-stone text-center leading-loose">
-      Set in <span class="text-ink">Fraunces</span> &amp; <span class="text-ink">JetBrains Mono</span>
-      &middot; cream and oxblood
-      &middot; rendered from <span class="text-ink">{buildSha}</span> at <span class="text-ink">{buildTime}</span>
-      &middot; under <span class="text-ink">UNITARES</span> governance
-      &nbsp;—&nbsp; fin.
-    </div>
-  </footer>
+  <PageFooter />
 </BaseLayout>

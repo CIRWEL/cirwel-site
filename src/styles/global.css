@@ -125,6 +125,11 @@ a {
 a:hover {
   text-decoration-color: rgba(122, 31, 31, 1);
 }
+a:focus-visible {
+  outline: 2px solid #7A1F1F;
+  outline-offset: 3px;
+  border-radius: 1px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .reveal {

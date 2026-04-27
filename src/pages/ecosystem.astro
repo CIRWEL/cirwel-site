@@ -1,11 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-
-// Build-time provenance — same pattern as the home page colophon.
-// The /ecosystem dossier is part of the same loop the system describes.
-const buildSha  = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 8) || 'local';
-const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+import PageFooter from '../components/PageFooter.astro';
 ---
 <BaseLayout
   title="Ecosystem — UNITARES · CIRWEL Systems"
@@ -162,8 +158,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
           <div>
             <dt class="display smcp text-xl mb-2">Vigil</dt>
-            <p class="label text-stone mb-2">Resident · half-hour cron</p>
             <dd class="text-stone leading-relaxed">
+              <p class="label text-stone mb-2">Resident · half-hour cron</p>
               Janitorial. Runs health checks, tends the knowledge graph, exercises
               the test suite against itself. Catches what slow rot does to the
               substrate.
@@ -172,8 +168,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
           <div>
             <dt class="display smcp text-xl mb-2">Sentinel</dt>
-            <p class="label text-stone mb-2">Resident · continuous</p>
             <dd class="text-stone leading-relaxed">
+              <p class="label text-stone mb-2">Resident · continuous</p>
               Analytical. Watches the fleet, surfaces anomalies, keeps the
               trajectory measured rather than ODE-inferred.
             </dd>
@@ -181,8 +177,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
           <div>
             <dt class="display smcp text-xl mb-2">Watcher</dt>
-            <p class="label text-stone mb-2">Event-driven · post-edit hook</p>
             <dd class="text-stone leading-relaxed">
+              <p class="label text-stone mb-2">Event-driven · post-edit hook</p>
               Local-LLM reviewer. Fires on every code edit, flags persistence and
               concurrency hazards before commit. Resolution is auditable through
               the commit history itself.
@@ -191,8 +187,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
           <div>
             <dt class="display smcp text-xl mb-2">Steward</dt>
-            <p class="label text-stone mb-2">In-process · five-minute interval</p>
             <dd class="text-stone leading-relaxed">
+              <p class="label text-stone mb-2">In-process · five-minute interval</p>
               Synchronizer inside the governance MCP. Reconciles edge-device
               telemetry into the canonical state — the bridge between the
               embodied surface and the central record.
@@ -201,8 +197,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
           <div>
             <dt class="display smcp text-xl mb-2">Chronicler</dt>
-            <p class="label text-stone mb-2">Resident · daily</p>
             <dd class="text-stone leading-relaxed">
+              <p class="label text-stone mb-2">Resident · daily</p>
               Longitudinal scribe. Captures the codebase's own metric series so
               the repo carries its own <span class="smcp">EISV</span> trajectory
               across releases.
@@ -211,8 +207,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
           <div>
             <dt class="display smcp text-xl mb-2">Lumen</dt>
-            <p class="label text-stone mb-2">Embodied · Raspberry Pi</p>
             <dd class="text-stone leading-relaxed">
+              <p class="label text-stone mb-2">Embodied · Raspberry Pi</p>
               Edge resident with real sensors and persistent identity. The only
               physically situated process in the fleet — and the reason runtime
               self-state had to be a first-class artifact, not metadata.
@@ -403,29 +399,5 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
   </main>
 
-  <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
-    <div class="col-span-12 md:col-span-4">
-      <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
-      <p>Independent research operator.</p>
-    </div>
-    <div class="col-span-12 md:col-span-4">
-      <p class="label mb-3 text-ink">Records</p>
-      <p>
-        ORCID <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono">0009-0006-7544-2374</a><br/>
-        DOI <a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono">10.5281/zenodo.19647159</a>
-      </p>
-    </div>
-    <div class="col-span-12 md:col-span-4 md:text-right">
-      <p class="label mb-3 text-ink">© 2026</p>
-      <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
-    </div>
-
-    <div class="col-span-12 mt-8 pt-6 border-t border-sepia/40 label text-stone text-center leading-loose">
-      Set in <span class="text-ink">Fraunces</span> &amp; <span class="text-ink">JetBrains Mono</span>
-      &middot; cream and oxblood
-      &middot; rendered from <span class="text-ink">{buildSha}</span> at <span class="text-ink">{buildTime}</span>
-      &middot; under <span class="text-ink">UNITARES</span> governance
-      &nbsp;—&nbsp; fin.
-    </div>
-  </footer>
+  <PageFooter />
 </BaseLayout>
