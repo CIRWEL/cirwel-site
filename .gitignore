@@ -2,6 +2,9 @@
 dist/
 .astro/
 
+# worktrees
+.worktrees/
+
 # dependencies
 node_modules/
 
