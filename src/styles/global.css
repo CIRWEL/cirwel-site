@@ -69,7 +69,7 @@ body::before {
 /* Editorial drop cap — applied to first paragraph of §01 */
 .dropcap::first-letter {
   float: left;
-  font-family: '"Fraunces Variable"', 'Fraunces Fallback', 'Fraunces', serif;
+  font-family: "Fraunces Variable", "Fraunces Fallback", Fraunces, serif;
   font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
   font-size: 5.4em;
   line-height: 0.86;
