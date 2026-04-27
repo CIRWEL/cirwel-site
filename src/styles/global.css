@@ -81,6 +81,14 @@ body::before {
   padding-top: 0.04em;
 }
 
+/* First-line small caps — the classic 18th-c book opening, paired with drop cap */
+.dropcap::first-line {
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
 /* Hero run command — set as a typographic displayed element
    (hairline rules above + below, no background tint, no border-left).
    Reads as "publication displayed equation/quote", not "tech-demo code block". */
