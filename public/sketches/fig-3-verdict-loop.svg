@@ -11,7 +11,7 @@
 
   Matches FIG. I and FIG. II in plate dimensions, frame, fleurons, caption.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="2160" height="1320">
   <defs>
     <filter id="rough3" x="-2%" y="-2%" width="104%" height="104%">
       <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="17" result="n"/>

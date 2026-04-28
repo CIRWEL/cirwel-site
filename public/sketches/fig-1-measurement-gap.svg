@@ -12,7 +12,7 @@
   ink, hairline plate frame, corner fleurons, hand-cut roughness, mono
   small-caps captions.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="2160" height="1320">
   <defs>
     <filter id="rough1" x="-2%" y="-2%" width="104%" height="104%">
       <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="11" result="n"/>

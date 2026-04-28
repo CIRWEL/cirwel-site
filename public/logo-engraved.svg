@@ -18,7 +18,7 @@
   Intended for view as a brand mark, not as a favicon — too detailed to
   legibly render at 16x16. View at https://cirwel.org/logo-engraved.svg
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="600" height="600">
   <defs>
     <!-- Hand-cut engraving roughness — slight displacement of stroke paths -->
     <filter id="engrave" x="-5%" y="-5%" width="110%" height="110%">
