@@ -26,9 +26,9 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
           Most AI safety reasons about agents in two windows: pre-deployment evaluation
           and post-incident forensics. Between them — <em>while agents are actually
-          running</em> — there is a measurement gap. Continuous, class-calibrated
-          self-state telemetry, with signed provenance behind every intervention,
-          fills it.
+          running</em> — event traces are abundant, but there is no canonical reading
+          of an agent's own state. Continuous, class-calibrated self-state telemetry —
+          with signed provenance behind every intervention — supplies it.
         </p>
       </div>
     </section>
@@ -63,7 +63,7 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
 
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Patents</dt>
         <dd class="col-span-8 md:col-span-9">
-          9<span class="text-stone">+</span> provisional, filed
+          9 provisional applications<span class="text-stone"> · 2025–2026</span>
         </dd>
 
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
@@ -98,11 +98,13 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-ink">
           <p class="dropcap max-w-prose">
-            The discipline of AI safety has built two strong instruments and one large gap.
-            <em>Pre-deployment evaluation</em> tells you whether a model behaves on a
-            benchmark. <em>Post-incident forensics</em> tells you what went wrong after
-            it didn't. In between — across the hours, days, and weeks an agent is
-            actually running — we have largely been guessing.
+            The discipline of AI safety has built two strong instruments and one
+            missing reading. <em>Pre-deployment evaluation</em> tells you whether a
+            model behaves on a benchmark. <em>Post-incident forensics</em> tells you
+            what went wrong after it didn't. In between — across the hours, days,
+            and weeks an agent is actually running — operators have abundant traces
+            of <em>what</em> the agent did, but no canonical reading of <em>what
+            state it was in while doing it</em>.
           </p>
           <p class="text-xl md:text-2xl italic text-ink leading-snug py-2 max-w-prose">
             Logs are what an agent did.<br/>Self-state is what it was while doing it.
@@ -115,13 +117,17 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
           </figure>
 
           <p class="max-w-prose">
-            CIRWEL Systems builds the runtime layer that closes the gap. Each agent
-            carries a continuous, four-dimensional self-state vector. The vector is
-            calibrated against a baseline specific to the agent's <em>class</em>,
-            because a long-running coding assistant does not behave like an ephemeral
-            parser, and neither behaves like an embodied service. Drift is detected
-            against the right reference, not an averaged one. Every governance verdict
-            — <span class="font-mono text-base">proceed</span>,
+            CIRWEL Systems builds the runtime layer that supplies that reading. Each
+            agent carries a continuous, four-dimensional self-state vector — broadly:
+            capacity, signal integrity, uncertainty, and the accumulated imbalance
+            among them, each summarized from check-ins onto a fixed scale. The vector
+            is calibrated against a baseline specific to the agent's <em>class</em>
+            (a coding session, a research conversation, a resident cron, an embodied
+            service, an ephemeral parser), because a long-running coding assistant
+            does not behave like an ephemeral parser, and neither behaves like an
+            embodied service. Drift is detected against the right reference, not an
+            averaged one. Every governance verdict —
+            <span class="font-mono text-base">proceed</span>,
             <span class="font-mono text-base">guide</span>,
             <span class="font-mono text-base">pause</span>,
             <span class="font-mono text-base">reject</span> — carries a signed lineage
@@ -130,9 +136,9 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
 
           <p class="max-w-prose">
             The framework is described in
-            <a href="https://doi.org/10.5281/zenodo.19647159">a paper</a>,
-            covered by nine provisional patents, and has been governing CIRWEL's own
-            development fleet without interruption since November 2025.
+            <a href="https://doi.org/10.5281/zenodo.19647159">a paper</a>
+            and has been governing CIRWEL's own development fleet without
+            interruption since November 2025.
           </p>
         </div>
       </div>
@@ -203,27 +209,28 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
     <!-- INTERLUDE: First measurement -->
     <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">— A first measurement</p>
+        <p class="label text-oxblood">— A measurement on our own fleet</p>
       </div>
       <div class="col-span-12 lg:col-span-9 max-w-prose">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">
-          29% of verdicts changed.
+          Per-class and fleet-wide baselines disagree on 29% of verdicts.
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-ink">
           <p>
-            On a 30-day slice of production data — 13,310 governance
+            On a 30-day slice of our own production data — 13,310 governance
             observations across the fleet — replaying each decision with
-            per-class baselines instead of one fleet-wide baseline disagrees
-            on <span class="font-medium">28.9%</span> of them. The disagreement
-            skews systematically: state vectors the fleet-wide baseline
-            classifies as healthy or borderline are usually flagged as
-            drifting under per-class baselines. Per-class flip rates range
-            15&ndash;33%.
+            per-class baselines instead of one fleet-wide baseline produces
+            a different verdict <span class="font-medium">28.9%</span> of
+            the time. The disagreement skews systematically: state vectors
+            the fleet-wide baseline classifies as healthy or borderline are
+            usually flagged as drifting under per-class baselines.
+            Per-class flip rates range 15&ndash;33%.
           </p>
           <p class="text-stone">
-            This is the cost of "average all agents into one distribution"
-            making its first quantitative appearance, on real production
-            data. Class-conditional calibration is the response.
+            This is internal measurement, not external validation. But the
+            gap is large enough to show that averaging dissimilar agents
+            into one distribution is not a benign default; class-conditional
+            calibration is the response.
             (§11.6 of the
             <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>.)
           </p>
