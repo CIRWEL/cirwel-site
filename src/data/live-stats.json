@@ -1,0 +1,9 @@
+{
+  "events_total": "94,000+",
+  "events_7d": "≈51,000",
+  "active_agents_7d": "2,226",
+  "kg_discoveries": "578",
+  "refreshed_at": "2026-05-03",
+  "source": "https://github.com/CIRWEL/unitares — single-operator self-traffic, not external adoption",
+  "_note": "Snapshot. Update via scripts/refresh-live-stats.sh or by hand. Page rebuilds when this file changes."
+}

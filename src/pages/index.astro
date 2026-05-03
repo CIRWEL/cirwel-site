@@ -5,6 +5,7 @@ import PageFooter from '../components/PageFooter.astro';
 import fig1Svg from '../../public/sketches/fig-1-measurement-gap.svg?raw';
 import fig2Svg from '../../public/sketches/fig-2-named-fleet.svg?raw';
 import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
+import liveStats from '../data/live-stats.json';
 ---
 <BaseLayout
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
@@ -93,7 +94,41 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
       </dl>
     </section>
 
-    <hr class="hairline mt-2 mb-20"/>
+    <hr class="hairline mt-2"/>
+
+    <!-- LIVE — proof-of-life snapshot from production telemetry -->
+    <section class="py-14 grid grid-cols-12 gap-6 reveal reveal-5">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">— Right now, on the fleet</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
+          <div>
+            <dt class="label text-stone mb-2">Governance events</dt>
+            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.events_total}</dd>
+          </div>
+          <div>
+            <dt class="label text-stone mb-2">Last 7 days</dt>
+            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.events_7d}</dd>
+          </div>
+          <div>
+            <dt class="label text-stone mb-2">Active agents <span class="text-stone">(7d)</span></dt>
+            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.active_agents_7d}</dd>
+          </div>
+          <div>
+            <dt class="label text-stone mb-2">KG discoveries</dt>
+            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.kg_discoveries}</dd>
+          </div>
+        </dl>
+        <p class="text-sm text-stone mt-8 max-w-prose">
+          Self-traffic from a single-operator workstation, not external adoption — a
+          stress test of the pipeline, not a market signal. Snapshot refreshed
+          {liveStats.refreshed_at}; the page rebuilds when these numbers do.
+        </p>
+      </div>
+    </section>
+
+    <hr class="hairline mb-20"/>
 
     <!-- §01 THE THESIS -->
     <section id="thesis" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
@@ -106,13 +141,13 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-ink">
           <p class="dropcap max-w-prose">
-            The discipline of AI safety has built two strong instruments and one
-            missing reading. <em>Pre-deployment evaluation</em> tells you whether a
-            model behaves on a benchmark. <em>Post-incident forensics</em> tells you
-            what went wrong after it didn't. In between — across the hours, days,
-            and weeks an agent is actually running — operators have abundant traces
-            of <em>what</em> the agent did, but no canonical reading of <em>what
-            state it was in while doing it</em>.
+            Operating a heterogeneous agent fleet in continuous production surfaces
+            a class of failure that pre-deployment evaluation and post-incident
+            forensics don't catch: the slow, silent drift of agent state across
+            hours and days of normal running. The traces show <em>what</em> the
+            agent did, abundantly. They don't show <em>what state it was in while
+            doing it</em> — because nothing on the agent or alongside it is
+            producing that reading.
           </p>
           <p class="text-xl md:text-2xl italic text-ink leading-snug py-2 max-w-prose">
             Logs are what an agent did.<br/>Self-state is what it was while doing it.
@@ -125,21 +160,15 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
           </figure>
 
           <p class="max-w-prose">
-            CIRWEL Systems builds the runtime layer that supplies that reading. Each
-            agent carries a continuous, four-dimensional self-state vector — broadly:
-            capacity, signal integrity, uncertainty, and the accumulated imbalance
-            among them, each summarized from check-ins onto a fixed scale. The vector
-            is calibrated against a baseline specific to the agent's <em>class</em>
-            (a coding session, a research conversation, a resident cron, an embodied
-            service, an ephemeral parser), because a long-running coding assistant
-            does not behave like an ephemeral parser, and neither behaves like an
-            embodied service. Drift is detected against the right reference, not an
-            averaged one. Every governance verdict —
-            <span class="font-mono text-base">proceed</span>,
-            <span class="font-mono text-base">guide</span>,
-            <span class="font-mono text-base">pause</span>,
-            <span class="font-mono text-base">reject</span> — carries a signed lineage
-            back to the observation that produced it.
+            CIRWEL's response is a runtime layer that gives each agent a continuous
+            reading of its own state — a four-dimensional vector summarizing
+            capacity, signal integrity, uncertainty, and the imbalance among them,
+            updated from every check-in. The reading is calibrated against agents
+            of the same <em>class</em> (a coding session, a research conversation, a
+            resident cron, an embodied service, an ephemeral parser), because a
+            long-running coding assistant does not behave like an ephemeral parser,
+            and neither behaves like an embodied service. Drift is then detected
+            against the right reference, not an averaged one.
           </p>
 
           <p class="max-w-prose">
@@ -264,6 +293,14 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
             mix of long-running resident agents, short-lived coding sessions, an
             embodied edge service, and a Discord bridge — has been governed
             continuously by UNITARES since November 2025.
+          </p>
+          <p class="max-w-prose">
+            Each check-in produces one of four governance verdicts —
+            <span class="font-mono text-base">proceed</span>,
+            <span class="font-mono text-base">guide</span>,
+            <span class="font-mono text-base">pause</span>,
+            <span class="font-mono text-base">reject</span> — together with a signed
+            lineage back to the observation that triggered it.
           </p>
 
           <figure class="my-10 max-w-3xl figure-svg"
