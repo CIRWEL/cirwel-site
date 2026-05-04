@@ -22,7 +22,7 @@ import PageFooter from '../components/PageFooter.astro';
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
           Six processes living under one framework, sharing one substrate,
-          governed by a verdict economy that ties each decision to evidence.
+          where every decision ties back to evidence.
           The home page states the thesis; this page walks the anatomy.
         </p>
       </div>
@@ -98,16 +98,15 @@ import PageFooter from '../components/PageFooter.astro';
             A paper is a claim.<br/>A server is its existence proof.
           </p>
           <p>
-            The paper makes the formal claim — a four-dimensional state
-            vector, class-conditional calibration, signed verdict provenance,
-            and the stability proofs that justify them. The server takes
-            that claim and renders it as a running <span class="smcp">MCP</span>
-            service: PostgreSQL with the Apache <span class="smcp">AGE</span>
-            graph extension, pgvector for semantic retrieval, Redis for
-            transient state, Prometheus for telemetry. Every governance tool
-            the fleet uses — onboard, check-in, dialectic, knowledge
-            contribution, recovery — runs against this surface and is
-            auditable through it.
+            The formal claim — a four-dimensional state vector,
+            class-conditional calibration, signed verdict provenance, the
+            stability proofs that justify them — is rendered as a running
+            <span class="smcp">MCP</span> service: PostgreSQL with the Apache
+            <span class="smcp">AGE</span> graph extension, pgvector for
+            semantic retrieval, Redis for transient state, Prometheus for
+            telemetry. Every governance tool the fleet uses — onboard,
+            check-in, dialectic, knowledge contribution, recovery — runs
+            against this surface and is auditable through it.
           </p>
           <p>
             The plugin closes the loop. It drops into Claude Code or Codex
@@ -120,9 +119,9 @@ import PageFooter from '../components/PageFooter.astro';
           <p>
             What runs under that plugin and against that server is the fleet:
             a small society of named processes — residents, event-driven
-            scribes, an embodied edge service, a Discord bridge — all
-            governed by the same server, all reading and writing the same
-            knowledge graph. §02 names them.
+            scribes, an embodied edge service — all governed by the same
+            server, all reading and writing the same knowledge graph. §02
+            names them.
           </p>
         </div>
       </div>
@@ -246,6 +245,9 @@ import PageFooter from '../components/PageFooter.astro';
             outcome is the agent the system thinks it was, and the lineage that
             led there is the lineage that actually led there.
           </p>
+          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
+            Continuity lives in the graph, not in the agent.
+          </p>
         </div>
       </div>
     </section>
@@ -301,7 +303,10 @@ import PageFooter from '../components/PageFooter.astro';
           </p>
           <p>
             Verdicts that sit close to the edge of healthy state carry a
-            <span class="font-mono text-base">tight-margin</span> flag.
+            <span class="font-mono text-base">tight-margin</span> flag —
+            a <span class="font-mono text-base">proceed</span> at E=0.62
+            against a 0.60 floor lands with
+            <span class="font-mono text-base">margin: tight</span>.
             Operators who care about the difference between <em>just inside</em>
             and <em>well inside</em> get to see it.
           </p>
@@ -327,12 +332,14 @@ import PageFooter from '../components/PageFooter.astro';
             findings are first-class entries with status lifecycles — open,
             resolved, archived — and rich tags that route them across the system.
           </p>
+          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
+            Nothing the fleet learns lives in one head.
+          </p>
           <p>
             The graph runs on PostgreSQL with the Apache <span class="smcp">AGE</span>
             extension and pgvector retrieval, joined by a hybrid reciprocal-rank-fusion
             ranker. Search is the same surface for the operator at a dashboard and
-            for the agent in the middle of a check-in. Nothing the fleet learns
-            lives in one head.
+            for the agent in the middle of a check-in.
           </p>
           <p>
             That shared substrate is what turns a collection of agents into a
@@ -347,14 +354,14 @@ import PageFooter from '../components/PageFooter.astro';
 
     <hr class="hairline"/>
 
-    <!-- §06 ADJACENT COMPONENTS -->
+    <!-- §06 PUBLIC SURFACES -->
     <section id="adjacent" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§06 — Adjacent components</p>
+        <p class="label text-oxblood">§06 — Public surfaces</p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-10 leading-tight max-w-prose">
-          What sits next to the framework.
+          What you can touch from outside.
         </h2>
 
         <div class="space-y-12 max-w-prose">
@@ -365,8 +372,8 @@ import PageFooter from '../components/PageFooter.astro';
             <p class="text-stone leading-relaxed">
               A three-layer system: rule-based generator → LoRA teacher on
               Qwen3-4B → distilled RandomForest student for Pi deployment. The
-              trajectory dataset (21,449 records, nine shape classes) and three
-              corresponding models are public on
+              trajectory dataset (32,181 records, nine shape classes) and the
+              teacher and student models are public on
               <a href="https://huggingface.co/hikewa" class="font-mono text-base">huggingface.co/hikewa</a>.
               Affinity-weighted token sampling with online feedback —
               interpretable end to end.
