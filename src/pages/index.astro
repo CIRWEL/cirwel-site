@@ -96,10 +96,10 @@ import liveStats from '../data/live-stats.json';
 
     <hr class="hairline mt-2"/>
 
-    <!-- LIVE — proof-of-life snapshot from production telemetry -->
+    <!-- Production snapshot from the public unitares README -->
     <section class="py-14 grid grid-cols-12 gap-6 reveal reveal-5">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">— Right now, on the fleet</p>
+        <p class="label text-oxblood">— Production snapshot</p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
@@ -122,8 +122,8 @@ import liveStats from '../data/live-stats.json';
         </dl>
         <p class="text-sm text-stone mt-8 max-w-prose">
           Self-traffic from a single-operator workstation, not external adoption — a
-          stress test of the pipeline, not a market signal. Snapshot refreshed
-          {liveStats.refreshed_at}; the page rebuilds when these numbers do.
+          stress test of the pipeline, not a market signal. Snapshot as of
+          {liveStats.refreshed_at}, matched to the public README production snapshot.
         </p>
       </div>
     </section>
