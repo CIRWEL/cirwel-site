@@ -1,9 +1,9 @@
 {
-  "events_total": "351K+",
-  "events_7d": "≈94K",
-  "active_agents_7d": "135",
-  "kg_discoveries": "860",
-  "refreshed_at": "2026-05-06",
-  "source": "https://github.com/CIRWEL/unitares — single-operator self-traffic, not external adoption",
-  "_note": "Aligned to the public unitares README production snapshot for application review; auto-refresh script may overwrite when local telemetry is authoritative again."
+  "events_total": "162K+",
+  "events_7d": "691",
+  "active_agents_7d": "19,731",
+  "kg_discoveries": "921",
+  "refreshed_at": "2026-05-18",
+  "source": "https://github.com/cirwel/unitares — single-operator self-traffic, not external adoption",
+  "_note": "Auto-refreshed by ~/scripts/refresh-cirwel-stats.sh (launchd com.cirwel.site-refresh-stats)."
 }
