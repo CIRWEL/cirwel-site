@@ -27,3 +27,6 @@ pnpm-debug.log*
 .vscode/
 .idea/
 *.swp
+
+# superpowers plugin planning artifacts
+docs/superpowers/
